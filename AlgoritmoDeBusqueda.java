@@ -11,14 +11,14 @@ public class AlgoritmoDeBusqueda {
         Set<Integer> visitados = new HashSet<>();
         int[] anterior = new int[n];
         Arrays.fill(anterior,-1);
-        
+
         cola.add(0);
         visitados.add(0);
 
         while(!cola.isEmpty()) {
             int nodoActual = cola.poll();
             Object[] aNodo = grafo.listarNodosAdyacentes(nodoActual).toArray();
-            
+
             if(nodoActual == n-1){
                 List<Set<Integer>> rutaInversa = new ArrayList<>();
                 int nodo = n-1;
@@ -37,11 +37,11 @@ public class AlgoritmoDeBusqueda {
                 }
                 return ruta;
             }
-            
+
             for(int i = 0; i < aNodo.length; i++){
 
                 int adyacente = (int) aNodo[i];
-                
+
                 if(!visitados.contains(adyacente)){
                     anterior[adyacente] = nodoActual;
 
@@ -56,7 +56,7 @@ public class AlgoritmoDeBusqueda {
 
     //Metodo DIJKSTRA (Todos tienen el mismo peso)
     public List<Set<Integer>> Dijkstra(Grafo grafo){
-        
+
         int n = grafo.getCantidadDeNodos();
         Queue<Integer> cola = new LinkedList<>();
         int[] distancia = new int[n];
@@ -69,7 +69,7 @@ public class AlgoritmoDeBusqueda {
         cola.add(0);
 
         while(!cola.isEmpty()){
-            
+
             int nodoActual = cola.poll();
             Object[] aNodo = grafo.listarNodosAdyacentes(nodoActual).toArray();
 
@@ -92,17 +92,17 @@ public class AlgoritmoDeBusqueda {
                 return ruta;
             }
 
-            for(int i = 0; i < aNodo.length; i++){   
+            for(int i = 0; i < aNodo.length; i++){
                 int adyacente = (int) aNodo[i];
-                
+
                 int distanciaActual = distancia[nodoActual] + 1;
-                
+
                 if(distanciaActual < distancia[adyacente]){
                     distancia[adyacente] = distanciaActual;
                     anterior[adyacente] = nodoActual;
                     cola.add(adyacente);
                 }
-            }    
+            }
 
         }
         return null;
@@ -180,7 +180,7 @@ public class AlgoritmoDeBusqueda {
                 }
 
             }
-            
+
         }
 
         return null;

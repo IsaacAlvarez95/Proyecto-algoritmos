@@ -22,7 +22,6 @@ public class ArchivoCSV {
         String[] splitPrimeraLinea;
         int filas;
         int columnas;
-        int cantidadDeNodos;
 
         try{
             lector= new BufferedReader(new FileReader(rutaCSV));
@@ -36,10 +35,9 @@ public class ArchivoCSV {
 
         filas= Integer.parseInt(splitPrimeraLinea[0]);
         columnas= Integer.parseInt(splitPrimeraLinea[1]);
-        cantidadDeNodos=filas*columnas;
 
         grafoGenerado= new Grafo();
-        grafoGenerado.inicializarListaDeAdyacencia(cantidadDeNodos);
+        grafoGenerado.inicializarListaDeAdyacencia(filas, columnas);
 
         try{
 
